@@ -5,7 +5,7 @@
     <artifactId>jakartaCDI</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>2024_ITESS_jakarta_jakartaCDI-1.0</name>
+    <name>2024_ITESS_jakarta_JPA jakartaCDI-1.0</name>
     
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
