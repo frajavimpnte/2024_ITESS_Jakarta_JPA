@@ -11,14 +11,14 @@
     <h:body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Navbar</a> 
+          <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->                               
+                <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
                 <h:link class="nav-link active" pt:aria-current="page" value="Home" outcome="index" />
               </li>
               <li class="nav-item">
@@ -46,39 +46,15 @@
           </div>
         </div>
       </nav>
-      
-      <h:form id="studentForm">
-      <h:messages/>
-      <h:panelGrid columns="2"
-        columnClasses="rightAlign,leftAlign">
-        <h:outputLabel for="firstName" value="First Name:">
-        </h:outputLabel>
-        <h:inputText id="firstName"
-          label="First Name"
-          value="#{student.firstName}"
-          required="true">
-          <f:validateLength minimum="2" maximum="30"/>
-        </h:inputText>
-        <h:outputLabel for="lastName" value="Last Name:">
-        </h:outputLabel>
-        <h:inputText id="lastName"
-                     label="Last Name"
-                     value="#{student.lastName}"
-                     required="true">
-          <f:validateLength minimum="2" maximum="30"/>
-        </h:inputText>
-        <h:outputLabel for="email" value="Email:">
-        </h:outputLabel>
-        <h:inputText id="email"
-          label="Email"
-          value="#{student.email}">
-          <f:validateLength minimum="3" maximum="30"/>
-        </h:inputText>
-        <h:panelGroup></h:panelGroup>
-        <h:commandButton action="information" value="Save">
-        </h:commandButton>
-      </h:panelGrid>
-    </h:form>       
+     
+        <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+          <h:outputText value="First Name:"/>
+          <h:outputText value="#{student.firstName}"/>
+          <h:outputText value="Last Name:"></h:outputText>
+          <h:outputText value="#{student.lastName}"/>
+          <h:outputText value="Email:"/>
+          <h:outputText value="#{student.email}"/>
+        </h:panelGrid>
         
       <h:outputScript library="webjars" name="bootstrap/5.3.3/js/bootstrap.min.js" />
     </h:body>
