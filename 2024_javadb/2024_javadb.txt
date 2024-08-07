@@ -1,0 +1,35 @@
+The Student dummy database -------------------------------------------------------------------------------------
+::java version is 1.8 or 17, y debe ser una version compatible con JAVADB
+
+::start glasfish
+
+::start database
+	glassfish\bin>.\asadmin start-database
+
+:::config JDK	
+	set JAVA_HOME to JDK java 17 or 1.8
+
+:::config derby path DERBY_INSTALL & DERBY_HOME, 
+	donde este instalado [glassfish installationdirectory]\glassfish\javadb
+	o usar script javadb\bin>setNetworkClientCP.bat
+
+::create database,  ver  https://db.apache.org/derby/papers/DerbyTut/ij_intro.html#ij_create	
+[glassfish installation directory]\javadb\bin
+	 .\ij.bat
+	 run '\path\to\script\create_populate_tables.sql';
+	 run '..\create_populate_tables.sql';
+	 quit;
+
+::crear conexion en netbeans
+	services > new connection > "configurar, user Network y agregar DEV"
+	connect 'jdbc:derby://localhost:1527/customerdb;user=dev;password=dev';
+
+::test database
+	.\ij.bat
+	connect 'jdbc:derby://localhost:1527/customerdb;user=dev;password=dev';
+	show tables;
+	
+::Create connection pool & datasource	
+[glassfish installation directory]\glassfish\bin
+	.\asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.DataSource --property DatabaseName=customerdb:User=dev:password=dev CustomerDBPool"
+	.\asadmin create-jdbc-resource --connectionpoolid CustomerDBPool jdbc/__CustomerDBPool
