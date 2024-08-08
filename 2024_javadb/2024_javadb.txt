@@ -22,14 +22,14 @@ The Student dummy database -----------------------------------------------------
 
 ::crear conexion en netbeans
 	services > new connection > "configurar, user Network y agregar DEV"
-	connect 'jdbc:derby://localhost:1527/customerdb;user=dev;password=dev';
+	connect 'jdbc:derby://localhost:1527/studentdb;user=dev;password=dev';
 
 ::test database
 	.\ij.bat
-	connect 'jdbc:derby://localhost:1527/customerdb;user=dev;password=dev';
+	connect 'jdbc:derby://localhost:1527/studentdb;user=dev;password=dev';
 	show tables;
 	
 ::Create connection pool & datasource	
 [glassfish installation directory]\glassfish\bin
-	.\asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.DataSource --property DatabaseName=customerdb:User=dev:password=dev CustomerDBPool"
-	.\asadmin create-jdbc-resource --connectionpoolid CustomerDBPool jdbc/__CustomerDBPool
+	.\asadmin create-jdbc-connection-pool --datasourceclassname org.apache.derby.jdbc.ClientDataSource --restype javax.sql.DataSource --property DatabaseName=studentdb:User=dev:password=dev StudentDBPool
+	.\asadmin create-jdbc-resource --connectionpoolid StudentDBPool jdbc/__StudentDBPool
