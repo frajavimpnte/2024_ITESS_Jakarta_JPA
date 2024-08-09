@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">      <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Edit Customer</title>
+    <link rel="stylesheet" type="text/css" href="/jakartaeealltogether/faces/jsfcrud.css" />
+  </head>
+  <body>
+    <h:panelGroup id="messagePanel" layout="block">
+      <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+    </h:panelGroup>
+    <h1>Edit Customer</h1>
+    <h:form>
+      <h:panelGrid columns="2">
+        <h:outputText value="First Name:"/>
+        <h:inputText id="firstName" value="#{customerController.customer.firstName}" title="FirstName" />
+        <h:outputText value="Last Name:"/>
+        <h:inputText id="lastName" value="#{customerController.customer.lastName}" title="LastName" />
+        <h:outputText value="Email:"/>
+        <h:inputText id="email" value="#{customerController.customer.email}" title="Email" />
+        <h2>Address</h2>
+        <h:panelGroup/>
+        <h:outputText id="addrType" value="Address Type"/>
+        <h:selectOneMenu id="selectOneAddr" value="#{customerController.customer.addressList[0].addressType}">
+          <f:selectItems id="selectOneAddrOpts" value="#{addressTypeController.addressTypeItemsAvailableSelectOne}" />
+        </h:selectOneMenu>
+        <h:outputText id="addrLine1Lbl" value="Line 1"/>
+        <h:inputText id="addrLine1" value="#{customerController.customer.addressList[0].addrLine1}" required="true"/>
+        <h:outputText id="addrLine2Lbl" value="Line 2"/>
+        <h:inputText id="addrLine2" value="#{customerController.customer.addressList[0].addrLine2}"/>
+        <h:outputText id="addrCityLbl" value="City"/>
+        <h:inputText id="addrCity" value="#{customerController.customer.addressList[0].city}" required="true"/>
+        <h:outputText id="addrState" value="State"/>
+        <h:selectOneMenu id="selectOneState" value="#{customerController.customer.addressList[0].usState}" required="true">
+          <f:selectItems id="selectOneStateOpts" value="#{usStateController.usStateItemsAvailableSelectOne}"/>
+        </h:selectOneMenu>
+        <h:outputText id="addrZipLbl" value="Zip Code"/>
+        <h:inputText id="addrZip" value="#{customerController.customer.addressList[0].zip}" required="true"/>
+        <h2>Telephone</h2>
+        <h:panelGroup/>
+        <h:outputText id="phoneTypeLbl" value="Telephone Type"/>
+        <h:selectOneMenu id="selectOnePhoneType" value="#{customerController.customer.telephoneList[0].telephoneType}" required="true">
+          <f:selectItems id="selectOnePhoneTypeOpts" value="#{telephoneTypeController.telephoneTypeItemsAvailableSelectOne}"/>
+        </h:selectOneMenu>
+        <h:outputText id="phoneLbl" value="Telephone Number"/>
+        <h:inputText id="phone" value="#{customerController.customer.telephoneList[0].telephoneNumber}" required="true"/>
+        <h:panelGroup/>
+        <h:panelGroup>
+          <h:commandButton action="#{customerController.edit}" value="Save">
+            <f:param name="jsfcrud.currentCustomer" value="#{jsfcrud_class['com.ensode.jakartaeealltogether.faces.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][customerController.customer][customerController.converter].jsfcrud_invoke}"/>
+          </h:commandButton>
+          <h:commandButton action="#{customerController.listSetup}" value="Cancel" immediate="true"/>
+        </h:panelGroup>
+      </h:panelGrid>
+    </h:form>
+  </body>
+</html>
